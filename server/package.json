@@ -1,0 +1,26 @@
+{
+  "name": "movie-rating-web",
+  "version": "1.0.0",
+  "description": "Movie Rating and Review Web App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhishek-BG/Movie-Rating-Web.git"
+  },
+  "keywords": [
+    "Web",
+    "App"
+  ],
+  "author": "Abhishek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abhishek-BG/Movie-Rating-Web/issues"
+  },
+  "homepage": "https://github.com/Abhishek-BG/Movie-Rating-Web#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

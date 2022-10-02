@@ -4,8 +4,10 @@ export default function Movies()
 {
     return(
         <>
-          <Header/>
-        <h1>Movies</h1>
+          <Header/>  <div class="main-content">
+                <div class="container">
+                    <div class="page">
+                      </div></div></div>
         </>
       
     )

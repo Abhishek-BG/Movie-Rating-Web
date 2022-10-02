@@ -17,10 +17,18 @@
     border-radius: 3px;
     color: white;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-    -webkit-transition: .3s ease;
-            transition: .3s ease; 
+ }
+  
+ .mybtn1{
+    border: none;
+    margin:3px;
+    border-radius: 0px;
+    color: #ffaa3c;
+    margin-top:5px;
+    background-color: white;
  }
 
+ 
  
  .mybtn2{
     border: none;
@@ -45,6 +53,7 @@
     width:100%;
     max-height:290px;
     margin-top:30%;
+    margin-bottom: 10px;
 }
 .img-height{
     max-height: 220px;
@@ -62,7 +71,7 @@
   }
   
   .notification:hover {
-    background:  white;
+    background:  #ffe9cc;
   }
   
   .notification .badge {
@@ -88,11 +97,14 @@
   h5{
     margin-top:-10px;
   }
+  .left{
+    margin-left:20px;
+  }
   .checked {
     color: orange;
   }
   .rating{
-    margin-top:-20px;
+    margin-top:-15px;
     margin-bottom:10px;
     margin-left:25px;
   }

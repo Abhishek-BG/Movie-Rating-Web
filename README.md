@@ -6,6 +6,7 @@
  3)npm install nodemon
  4)npm install cors axios
  5)npm install --save express-session body-parser cookie-parser 
+ 6)npm install redux redux-react-session --save
 # client 
  1) React app
  2) npm install 

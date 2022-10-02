@@ -32,6 +32,7 @@ export default function Adminlogin() {
         }).then((response) => {
             if (response.data.message === "success") {
                 Session.setemail(true);
+                sessionStorage.setItem("key", true);
                 nav("/Admindash");
             }
             else {

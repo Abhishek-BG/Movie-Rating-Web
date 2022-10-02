@@ -6,11 +6,13 @@ import Session from '../session/session';
 
 function Header(){
 	const nav = useNavigate();
+	var session = sessionStorage.getItem("key");
 function logout(){
 	Session.setemail(false);
+	sessionStorage.setItem("key", null);
 	nav('/');
 }
-	if(Session.getemail()==false)
+	if(Session.getemail()==false || session == false || session == null)
     {
 		return(
 			<>

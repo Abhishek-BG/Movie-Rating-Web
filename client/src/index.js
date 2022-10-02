@@ -6,6 +6,8 @@ import { BrowserRouter, Redirect, Routes, Route } from "react-router-dom";
 import Adminlogin from './Component/adminlogin'
 import Admindash from './Layout/admindash'
 import AddMovie from './Layout/admin/addmovie'
+import { combineReducers } from 'redux';
+import { sessionReducer } from 'react-session';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 function App() {

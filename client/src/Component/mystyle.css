@@ -41,3 +41,58 @@
  .cl-pm{
     color: #ffaa3c;
  }
+ .mymovie-box{
+    width:100%;
+    max-height:290px;
+    margin-top:30%;
+}
+.img-height{
+    max-height: 220px;
+    height:220px;
+    width:auto;
+}
+
+.notification {
+    color: white;
+    text-decoration: none;
+    padding: 15px 26px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+  }
+  
+  .notification:hover {
+    background:  white;
+  }
+  
+  .notification .badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color:  #ffaa3c;
+    color: white;
+  }
+  .badge:hover{
+    background-color: white;
+    color:  #ffaa3c;
+    border-color:#ffaa3c;
+  }
+  .card-wi{
+    margin-left:30px;
+  }
+  .card-ti{
+    margin-top:-80px;
+  }
+  h5{
+    margin-top:-10px;
+  }
+  .checked {
+    color: orange;
+  }
+  .rating{
+    margin-top:-20px;
+    margin-bottom:10px;
+    margin-left:25px;
+  }

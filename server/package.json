@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server":"nodemon run server.js"
+    "server": "nodemon run server.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,15 @@
   },
   "homepage": "https://github.com/Abhishek-BG/Movie-Rating-Web#readme",
   "dependencies": {
+    "-": "^0.0.1",
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
-    "nodemon": "^2.0.20"
+    "express-session": "^1.17.3",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "save": "^2.9.0"
   }
 }

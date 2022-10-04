@@ -17,21 +17,31 @@ const db = mysql.createConnection({
 });
 
 app.use(express.json());
+// app.use(
+//     cors({
+//         origin: "http://localhost:3000",
+//         methods: ["GET", "POST"],
+//         credentials: true
+
+//     })
+// );
 app.use(
     cors({
-        origin: "http://localhost:3000",
-        methods: ["GET", "POST"],
-        credentials: true
-
+      origin: '*',
+      preflightContinue: true,
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      credentials: true,
     })
-);
+  );
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
+   
 });
+
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -110,3 +120,41 @@ app.get('/mymovies', (req, res) => {
 app.listen(3001, () => {
     console.log("running server");
 });
+
+
+
+// app.post('/signup', (req, res) => {
+//     const name = req.body.name;
+//     const email = req.body.email;
+//     const password = req.body.password;
+//     db.query("SELECT * FROM users Where email = ?", 
+//     [email],
+//     (err, results, fields) => {
+//         if(err)
+//         {   console.log(err);
+//             res.send({ message:"User Exists"})
+//         }else{
+//             db.execute(
+        
+//                 "INSERT INTO users (name,email,password) values(?,?,?) ",
+//                 [name,email,password],
+//                 (err, result)=> {
+//                   // console.log(result);
+//                     if (err) {
+//                        console.log(err);
+//                     }
+//                     if (result.length > 0) {
+//                         res.send({message: "success"});
+//                         }
+//                    if(result.length <= 0)
+//                    {
+//                     res.send({ message: "error" })
+//                    }
+                  
+//                     }
+                
+//             );
+//         }
+//       });
+    
+//    });

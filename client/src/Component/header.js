@@ -30,7 +30,8 @@ function logout(){
 							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 							<ul class="menu">
 								<li class="menu-item ">  <Link to="/"> Home</Link></li>
-								<li class="menu-item"><Link to="/Movies">Movies</Link></li>
+								<li class="menu-item"><Link to="/Login">Login</Link></li>
+								<li class="menu-item"><Link to="/SignUp">Sign Up</Link></li>
 								<li class="menu-item"><Link to="/Admin">Watch List</Link></li>
 								<li class="menu-item"><Link to="/Adminlogin">Admin Login</Link></li>
 							</ul> 

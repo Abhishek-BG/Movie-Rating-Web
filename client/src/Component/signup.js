@@ -4,48 +4,40 @@ import { useState, useEffect } from 'react'
 import Axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Session from '../session/session';
-
 Axios.defaults.withCredentials = true;
 
-export default function Adminlogin() {
+export default function Signup() {
     const nav = useNavigate();
 
 
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
+    const [name,setname]= useState("");
+    const[password2, setpassword2]= useState("");
     const [status, setstatus] = useState("");
+    const sign = () => {
 
-    // useEffect(() => {
-    //     Axios.get("http://localhost:3001/login").then((response) => {
-    //       if (response.data.session == 'success') {
-    //         //alert("oj");
-    //       }
-    //     });
-    //   }, []);
-
-    //login event
-    const login = () => {
-
-       if(email != "" && password != "")
-       {
-        Axios.post("http://localhost:3001/login", {
+      if(email != "" && password != "" && password2 != "" && name != "")
+      {
+        if(password == password2)
+        {
+          Axios.post("http://localhost:3001/signup", {
             email: email,
             password: password,
+            name: name,
+
         }).then((response) => {
             if (response.data.message === "success") {
-                Session.setemail(true);
-                sessionStorage.setItem("key", true);
-                nav("/Admindash");
+                nav("/home");
             }
             else {
-                setstatus("Wrong Email or Password");
+                setstatus("something went Wrong");
 
             }
         });
-       }
-       else{
-        setstatus("Please enter all the feilds");
-       }
+        }
+      }
+      
     };
     return (
 
@@ -55,9 +47,15 @@ export default function Adminlogin() {
                 <div class="row justify-content-lg-center">
 
                     <div class="col-lg-auto myloginbox">
-                        <h1 class="">Admin Login</h1>
+                        <h1 class="text-centre">Sign Up</h1>
 
                         <div class="contact-form text-center">
+                        <input type="text"
+                                class="name"
+                                name="name"
+                                placeholder="Your Name"
+                                onChange={(e) => setname(e.target.value)}
+                                required />
                             <input type="email"
                                 class="email"
                                 name="email"
@@ -68,10 +66,16 @@ export default function Adminlogin() {
                                 class="password"
                                 name="password"
                                 placeholder="Password"
+                                onChange={(e) => setpassword2(e.target.value)}
+                                required />
+                            <input type="password"
+                                class="password"
+                                name="password"
+                                placeholder="Confirm Password"
                                 onChange={(e) => setpassword(e.target.value)}
                                 required />
                             <div class="alert-danger" >  {status} </div>
-                            <input type="button" class="text-centre" name="submit" value="Login " onClick={() => login()} />
+                            <input type="button" class="text-centre" name="submit" value="Sign Up " onClick={() => sign()} />
 
                         </div>
                     </div>

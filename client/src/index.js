@@ -6,6 +6,8 @@ import { BrowserRouter, Redirect, Routes, Route } from "react-router-dom";
 import Adminlogin from './Component/adminlogin'
 import Admindash from './Layout/admindash'
 import AddMovie from './Layout/admin/addmovie'
+import Signup from './Component/signup'
+import UserLogin from './Component/userlogin'
 import { combineReducers } from 'redux';
 import { sessionReducer } from 'react-session';
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,7 +22,8 @@ function App() {
           <Route path="/Movies" element={<Movies/>} />
           <Route path="/Adminlogin" element={<Adminlogin/>} />
           <Route path="/AdminDash" element={<Admindash/>} />
-          <Route path="/AddMovie" element={<AddMovie/>} />
+          <Route path="/SignUp" element={<Signup/>} />
+          <Route path="/Login" element={<UserLogin/>} />
         </Route>
       </Routes>
     </BrowserRouter>

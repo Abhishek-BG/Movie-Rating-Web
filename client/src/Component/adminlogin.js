@@ -50,12 +50,14 @@ export default function Adminlogin() {
     return (
 
         <>
-            <Header />
-            <div class="container">
+            <Header />    
+            <div class="main-content">
+                <div class="container">
+                    <div class="page">
                 <div class="row justify-content-lg-center">
 
                     <div class="col-lg-auto myloginbox">
-                        <h1 class="">Admin Login</h1>
+                        <h1 class="text-centre">Admin Login</h1>
 
                         <div class="contact-form text-center">
                             <input type="email"
@@ -76,6 +78,8 @@ export default function Adminlogin() {
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
         </>
     )

@@ -22,7 +22,7 @@ function logout(){
 						<a  id="branding">
 							<img src={logo} alt="" class="logo"/>
 							<div class="logo-copy">
-								<h1 class="site-title">Give My Review.com</h1 >
+								<h1 class="site-title">Review-My-Show.com</h1 >
 								<small class="site-description">Find the accurate review</small>
 							</div>
 							</a>

@@ -10,6 +10,7 @@ import Signup from './Component/signup'
 import UserLogin from './Component/userlogin'
 import { combineReducers } from 'redux';
 import { sessionReducer } from 'react-session';
+import Footer from './Component/footer'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 function App() {
@@ -21,12 +22,14 @@ function App() {
          <Route index element={<Home />} />
           <Route path="/Movies" element={<Movies/>} />
           <Route path="/Adminlogin" element={<Adminlogin/>} />
+          <Route path="/AddMovie" element={<AddMovie/>} />
           <Route path="/AdminDash" element={<Admindash/>} />
           <Route path="/SignUp" element={<Signup/>} />
           <Route path="/Login" element={<UserLogin/>} />
         </Route>
       </Routes>
     </BrowserRouter>
+    <Footer/>
    </>
   );
 }

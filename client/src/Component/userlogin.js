@@ -1,33 +1,86 @@
-
-
-import { Outlet, Link } from "react-router-dom";
+import Header from './header'
+import './mystyle.css'
+import { useState, useEffect } from 'react'
+import Axios from 'axios';
 import { useNavigate } from "react-router-dom";
-export default function UserLogin() {
+import Session from '../session/session';
+
+Axios.defaults.withCredentials = true;
+
+export default function Userlogin() {
+  const nav = useNavigate();
+
+
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [status, setstatus] = useState("");
+
+  // useEffect(() => {
+  //     Axios.get("http://localhost:3001/login").then((response) => {
+  //       if (response.data.session == 'success') {
+  //         //alert("oj");
+  //       }
+  //     });
+  //   }, []);
+
+  //login event
+  const login = () => {
+
+    if (email != "" && password != "") {
+      Axios.post("http://localhost:3001/userlogin", {
+        email: email,
+        password: password,
+      }).then((response) => {
+        if (response.data.message === "success") {
+          Session.setemail(true);
+          sessionStorage.setItem("key", true);
+          nav("/");
+        }
+        else {
+          setstatus("Wrong Email or Password");
+
+        }
+      });
+    }
+    else {
+      setstatus("Please enter all the feilds");
+    }
+  };
   return (
+
     <>
-      <div class="contact-form text-center">
-        <input type="email"
-          class="email"
-          name="email"
-          placeholder="Email"
-          //onChange={(e) => setemail(e.target.value)}
-          required />
-        <input type="password"
-          class="password"
-          name="password"
-          placeholder="Password"
-          //  onChange={(e) => setpassword(e.target.value)}
-          required />
-        <div class="alert-danger" >  </div>
-        <input type="button" class="text-centre" name="submit" value="Login "
-        //onClick={() => login()}
-        />
-        <div class="text-centre">
-          <h3>or<br></br>
-            <a>	<span class="menu-item"><Link to="/SignUp">Sign Up</Link></span></a></h3>
+      <Header />
+
+      <div class="main-content">
+        <div class="container">
+          <div class="page">
+            <div class="row justify-content-lg-center">
+
+              <div class="col-lg-auto myloginbox">
+                <h1 class="text-centre">Login</h1>
+
+                <div class="contact-form text-center">
+                  <input type="email"
+                    class="email"
+                    name="email"
+                    placeholder="Email"
+                    onChange={(e) => setemail(e.target.value)}
+                    required />
+                  <input type="password"
+                    class="password"
+                    name="password"
+                    placeholder="Password"
+                    onChange={(e) => setpassword(e.target.value)}
+                    required />
+                  <div class="alert-danger" >  {status} </div>
+                  <input type="button" class="text-centre" name="submit" value="Login " onClick={() => login()} />
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <Outlet />
     </>
   )
 }

@@ -59,6 +59,7 @@ app.post('/login', (req, res) => {
                 console.log(err);
             }
             if (result.length > 0) {
+    
                 res.send({ message: "success" });
             }
             if (result.length <= 0) {
@@ -114,7 +115,17 @@ app.post('/userlogin', (req, res) => {
                 console.log(err);
             }
             if (result.length > 0) {
-                res.send({ message: "success" });
+                if(result[0].role==0)
+                {
+                    res.send({ message: "success",role:0 });
+                }
+                else if(result[0].role==1){
+                    res.send({ message: "success",role:1 });
+                }
+                else if(result[0].role==2){
+                    res.send({ message: "success",role:2 });
+                }
+               
             }
             if (result.length <= 0) {
                 res.send({ message: "error" })
@@ -155,9 +166,52 @@ app.post('/movie', (req, res) => {
    });
 //submit rating 
 //
+
+app.post('/rating', (req, res) => {
+
+    const movieid  = req.body.movie_id;
+    const rating =req.body.rating;
+    const userid = req.body.user_id;
+    const userrole = req.body.user_role;
+    const value = req.body.value;
+
+    db.query("SELECT movie_id FROM review WHERE user_id = ?",[userid], (err, results, fields) => {
+        if(err) throw err;
+        if(results.length > 0)
+        { 
+            res.send({ message:"Review Exists"})
+        }
+        else{
+            db.execute(
+                "INSERT INTO review (movie_id,user_id,user_role,rating,value) values(?,?,?,?,?) ",
+                [movieid,userid,userrole,rating,value],
+                (err, result)=> {
+                    if (result.length > 0) {
+                        res.send({message: "success"});
+                        }
+                   if(result.length <= 0)
+                   {
+                    res.send({ message: "error" })
+                   }
+                  
+                    }
+                
+            );
+        }
+      });
+   
+   });
 //movie details 
 app.get('/mymovies', (req, res) => {
     db.query("SELECT * FROM movie", (err, results, fields) => {
+      if(err) throw err;
+         res.send(results);
+    });
+});
+//rating details 
+app.get('/Myrating', (req, res) => {
+    
+    db.query("SELECT * FROM review", (err, results, fields) => {
       if(err) throw err;
          res.send(results);
     });

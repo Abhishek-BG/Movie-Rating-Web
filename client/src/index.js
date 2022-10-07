@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import Movies from './Component/movies'
 import Home from './Layout/Home'
 import { BrowserRouter, Redirect, Routes, Route } from "react-router-dom";
-import Adminlogin from './Component/adminlogin'
 import Admindash from './Layout/admindash'
 import AddMovie from './Layout/admin/addmovie'
 import Signup from './Component/signup'
@@ -21,7 +20,6 @@ function App() {
         <Route>
          <Route index element={<Home />} />
           <Route path="/Movies" element={<Movies/>} />
-          <Route path="/Adminlogin" element={<Adminlogin/>} />
           <Route path="/AddMovie" element={<AddMovie/>} />
           <Route path="/AdminDash" element={<Admindash/>} />
           <Route path="/SignUp" element={<Signup/>} />

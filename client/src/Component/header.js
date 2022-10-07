@@ -2,97 +2,106 @@ import logo from './logo.png'
 import { Outlet, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Session from '../session/session';
-
-
-function Header(){
+function MyLinks() {
 	const nav = useNavigate();
+	function logout() {
+		Session.setrole(false);
+		sessionStorage.setItem("key", null);
+		nav('/');
+	}
+
+
 	var session = sessionStorage.getItem("key");
-function logout(){
-	Session.setemail(false);
-	sessionStorage.setItem("key", null);
-	nav('/');
-}
-	if(Session.getemail()==false || session == false || session == null)
-    {
-		return(
+	//alert(Session.getrole()==0)
+	if (Session.getrole() == false && session == 'null') {
+
+		return (
 			<>
+
+				<li class="menu-item ">  <Link to="/"> Home</Link></li>
+				<li class="menu-item"><Link to="/Admin">Movies</Link></li>
+				<li class="menu-item"><Link to="/Login">Login</Link></li>
+				<li class="menu-item"><Link to="/SignUp">Sign Up</Link></li>
+
+
+			</>)
+	}
+	else if (Session.getrole() == 0 && session != 'null') {
+		return (
+			<>
+				<li class="menu-item ">  <Link to="/"> Home</Link></li>
+				<li class="menu-item"><Link to="/Movies">Movies</Link></li>
+				<li class="menu-item"><Link to="/Watchlist">Watch List</Link></li>
+				<li class="menu-item">
+					<input type="button"
+						class="text-centre mybtn"
+						name="submit"
+						value="Logout"
+						onClick={() => logout()} />
+
+				</li>
+
+
+
+			</>)
+	}
+	else if (Session.getrole() == 1 && session != 'null') {
+		return (
+			<>
+				<li class="menu-item ">  <Link to="/"> Home</Link></li>
+				<li class="menu-item"><Link to="/AddMovie">Add Movies</Link></li>
+				<li class="menu-item"><Link to="/Reviews">Reviews</Link></li>
+				<li class="menu-item"><Link to="/Users">Users</Link></li>
+				<li class="menu-item">
+					<input type="button"
+						class="text-centre mybtn"
+						name="submit"
+						value="Logout"
+						onClick={() => logout()} />
+
+				</li>
+
+
+
+			</>)
+	}
+
+}
+
+function Header() {
+
+	return (
+		<>
 			<div id="site-content">
 				<div class="site-header">
 					<div class="container">
-						<a  id="branding">
-							<img src={logo} alt="" class="logo"/>
+						<a id="branding">
+							<img src={logo} alt="" class="logo" />
 							<div class="logo-copy">
 								<h1 class="site-title">Review-My-Show.com</h1 >
 								<small class="site-description">Find the accurate review</small>
 							</div>
-							</a>
+						</a>
 						<div class="main-navigation">
 							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 							<ul class="menu">
-								<li class="menu-item ">  <Link to="/"> Home</Link></li>
-								<li class="menu-item"><Link to="/Login">Login</Link></li>
-								<li class="menu-item"><Link to="/SignUp">Sign Up</Link></li>
-								<li class="menu-item"><Link to="/Admin">Watch List</Link></li>
-								<li class="menu-item"><Link to="/Adminlogin">Admin Login</Link></li>
-							</ul> 
-	
-							<form  class="search-form">
-								<input type="text" placeholder="Search..."/>
+								<MyLinks />
+							</ul>
+
+							<form class="search-form">
+								<input type="text" placeholder="Search..." />
 								<button><i class="fa fa-search"></i></button>
 							</form>
-	
-						<div class="mobile-navigation"></div>
+
+							<div class="mobile-navigation"></div>
+						</div>
 					</div>
 				</div>
 			</div>
-			</div>
-			<Outlet/>
-			</>
-		)
-    }else{
-		return(
-			<>
-			<div id="site-content">
-				<div class="site-header">
-					<div class="container">
-						<a  id="branding">
-							<img src={logo} alt="" class="logo"/>
-							<div class="logo-copy">
-								<h1 class="site-title">Give My Review.com</h1 >
-								<small class="site-description">Find the accurate review</small>
-							</div>
-							</a>
-						<div class="main-navigation">
-							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-							<ul class="menu">
-								<li class="menu-item ">  <Link to="/"> Home</Link></li>
-								<li class="menu-item"><Link to="/AddMovie">Add Movies</Link></li>
-								<li class="menu-item"><Link to="/Admin">Reviews</Link></li>
-								<li class="menu-item"><Link to="/Admin">Users</Link></li>
-								<li class="menu-item">
-								<input type="button"
-								 class="text-centre mybtn" 
-								 name="submit"
-								  value="Logout" 
-								onClick={() => logout()} />
-									
-								</li>
-							</ul> 
-	
-							<form  class="search-form">
-								<input type="text" placeholder="Search..."/>
-								<button><i class="fa fa-search"></i></button>
-							</form>
-	
-						<div class="mobile-navigation"></div>
-					</div>
-				</div>
-			</div>
-			</div>
-			<Outlet/>
-			</>
-		)
-    }
+			<Outlet />
+		</>
+	)
+
 
 }
 

@@ -118,7 +118,7 @@
   .rating{
     margin-top:-15px;
     margin-bottom:10px;
-    margin-left:25px;
+    margin-left:30%;
   }
   .on {
     color: #000;
@@ -126,7 +126,7 @@
   .off {
     color: #ccc;
   }
-  .rating2{font-size: 40px;
+  .rating2{font-size: 30px;
      margin-left:-5px;
      color: orange;
      }
@@ -136,4 +136,9 @@
       }
     .tl{
       margin-bottom:50px;
+    }
+    .imgsize{
+
+      width:auto;
+      height:500px;
     }

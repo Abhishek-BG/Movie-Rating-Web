@@ -175,7 +175,7 @@ app.post('/rating', (req, res) => {
     const userrole = req.body.user_role;
     const value = req.body.value;
 
-    db.query("SELECT movie_id FROM review WHERE user_id = ?",[userid], (err, results, fields) => {
+    db.query("SELECT * FROM review WHERE user_id = ? AND movie_id =?",[userid,movieid], (err, results, fields) => {
         if(err) throw err;
         if(results.length > 0)
         { 

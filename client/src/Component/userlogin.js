@@ -11,19 +11,11 @@ export default function Userlogin() {
   const nav = useNavigate();
 
 
-  const [email, setemail] = useState("");
+  const [email, setrole] = useState("");
   const [password, setpassword] = useState("");
   const [status, setstatus] = useState("");
 
-  // useEffect(() => {
-  //     Axios.get("http://localhost:3001/login").then((response) => {
-  //       if (response.data.session == 'success') {
-  //         //alert("oj");
-  //       }
-  //     });
-  //   }, []);
 
-  //login event
   const login = () => {
 
     if (email != "" && password != "") {
@@ -32,9 +24,21 @@ export default function Userlogin() {
         password: password,
       }).then((response) => {
         if (response.data.message === "success") {
-          Session.setemail(true);
-          sessionStorage.setItem("key", true);
-          nav("/");
+          sessionStorage.setItem("key", email);
+          if(response.data.role == 0)
+          {
+            Session.setrole(0);
+            nav("/");
+          }
+          else if(response.data.role == 1)
+          {
+            Session.setrole(1);
+            nav("/Admindash");
+          }
+          else{
+            Session.setrole(2);
+            nav("/");
+          }
         }
         else {
           setstatus("Wrong Email or Password");
@@ -64,7 +68,7 @@ export default function Userlogin() {
                     class="email"
                     name="email"
                     placeholder="Email"
-                    onChange={(e) => setemail(e.target.value)}
+                    onChange={(e) => setrole(e.target.value)}
                     required />
                   <input type="password"
                     class="password"

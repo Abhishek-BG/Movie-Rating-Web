@@ -40,6 +40,13 @@ export default function Home() {
     useEffect(() => {
         getData()
     }, [])
+//
+ function sum(pass){
+    pass= pass+pass;
+        return pass;
+    }
+   
+   
     return (
         <>
 
@@ -55,7 +62,6 @@ export default function Home() {
                                             <img src={item.url} class="card-img-top img-height " alt="..." />
                                             <span class="badge">{item.genre}
                                             </span>
-
                                         </p>
                                         <div class="rating">
                                             <span class="fa fa-star checked"></span>
@@ -63,7 +69,7 @@ export default function Home() {
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star checked"></span>
                                             <span class="fa fa-star checked"></span>
-                                            <span> {item.rating}</span>
+                                            <span></span>
                                         </div>
                                         <div class="card-body card-wi">
                                             <h5 class="left">
@@ -84,6 +90,7 @@ export default function Home() {
                                     </div>
                                 </div>
                             )}
+                           
                         </div>
                     </div>
                 </div>

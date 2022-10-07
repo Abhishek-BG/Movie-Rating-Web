@@ -6,9 +6,11 @@ import { Outlet, Link } from "react-router-dom";
 import Session from '../session/session';
 import { useState, useEffect } from 'react'
 import Axios from 'axios';
+import Movies from './movies'
 Axios.defaults.withCredentials = true;
-class Rating extends React.Component {
 
+class Rating extends React.Component {
+ 
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -21,8 +23,8 @@ class Rating extends React.Component {
       selectedIcon: "★",
       deselectedIcon: "☆"
     };
-
-    let outOf = props.outOf ? props.outOf : 5;
+   // var movie = Movies.location.state.sl;
+    let outOf = props.outOf ? props.outOf : 10;
 
     for (var i = 0; i < outOf; i++) {
       this.state.stars.push(i + 1);
@@ -51,20 +53,28 @@ class Rating extends React.Component {
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
+  
   submit() {
-
+     
+    const role = Session.getrole();
+    const mid = Session.getmid();
+    const session = sessionStorage.getItem("key");
     //form submit
+    //alert(this.state.rating+" "+this.state.value+" "+mid+" "+role+" "+session)
     if(this.state.value != "" && this.state.rating > 0)
     {
       Axios.post("http://localhost:3001/rating", {
         rating: this.state.rating,
         value: this.state.value,
+        movie_id:mid,
+        user_role:role,
+        user_id:session,
     }).then((response) => {
-        if (response.data.message === "success") {
+        if (response.data.message == "success") {
          this.setstatus("Review Submited");
         }
         else {
-            this.setstatus("You Cannot post more than one Review");
+            this.setstatus("You Cannot post more than one Review on a Movie");
 
         }
     });
@@ -73,6 +83,7 @@ class Rating extends React.Component {
      this.setstatus("Please Give a Valid rating");
     }
   }
+  
   render() {
 
     const { stars, rating, hovered, deselectedIcon, selectedIcon } = this.state;
@@ -109,7 +120,7 @@ class Rating extends React.Component {
 
             );
           })}
-          <h6 >{rating}/5</h6>
+          <h6 >{rating}/10</h6>
         </div>
         <textarea class=""
           name="text"

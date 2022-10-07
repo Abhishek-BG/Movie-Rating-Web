@@ -1,18 +1,27 @@
 var Session = (function() {
-    var email = false;
-  
-    var getemail = function() {
-      return email;    // Or pull this from cookie/localStorage
+    var role = false;
+    var mid = null;
+    var getmid = function() {
+      return mid;   
     };
   
-    var setemail = function(name) {
-      email = name;     
-      // Also set this in cookie/localStorage
+    var getrole = function() {
+      return role;  
     };
+  
+    var setrole = function(userrole) {
+      role = userrole;     
+    };
+    var setmid = function(m_id) {
+      mid = m_id;     
+    };
+
   
     return {
-      getemail: getemail,
-      setemail: setemail
+      getrole: getrole,
+      setrole: setrole,
+      getmid: getmid,
+      setmid: setmid
     }
   
   })();

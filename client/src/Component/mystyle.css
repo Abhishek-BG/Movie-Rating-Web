@@ -142,3 +142,11 @@
       width:auto;
       height:500px;
     }
+    .review-box{
+      border-radius: 3px;
+      border-color: #ffaa3c;
+    }
+    .test-img{
+      width:auto;
+      height:40px;
+    }

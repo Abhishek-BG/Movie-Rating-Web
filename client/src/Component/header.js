@@ -19,7 +19,6 @@ function MyLinks() {
 			<>
 
 				<li class="menu-item ">  <Link to="/"> Home</Link></li>
-				<li class="menu-item"><Link to="/Admin">Movies</Link></li>
 				<li class="menu-item"><Link to="/Login">Login</Link></li>
 				<li class="menu-item"><Link to="/SignUp">Sign Up</Link></li>
 
@@ -30,7 +29,6 @@ function MyLinks() {
 		return (
 			<>
 				<li class="menu-item ">  <Link to="/"> Home</Link></li>
-				<li class="menu-item"><Link to="/Movies">Movies</Link></li>
 				<li class="menu-item"><Link to="/Watchlist">Watch List</Link></li>
 				<li class="menu-item">
 					<input type="button"

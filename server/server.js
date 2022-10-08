@@ -209,9 +209,17 @@ app.get('/mymovies', (req, res) => {
     });
 });
 //rating details 
+
+//get movie id
+var mid = 0;
 app.get('/Myrating', (req, res) => {
-    
-    db.query("SELECT * FROM review", (err, results, fields) => {
+
+app.post('/Myrating', (request, result) => {
+    const id = request.body.id;
+    mid =id;
+});
+   // console.log(mid);
+    db.query("SELECT * FROM review where movie_id = ?",[mid], (err, results, fields) => {
       if(err) throw err;
          res.send(results);
     });

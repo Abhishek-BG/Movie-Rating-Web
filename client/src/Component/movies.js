@@ -8,6 +8,7 @@ import Session from '../session/session';
 import { useState, useEffect } from 'react'
 import Axios from 'axios';
 import Rating from './Rating'
+import './mystyle.css'
 Axios.defaults.withCredentials = true;
 
 function Form() {
@@ -38,8 +39,12 @@ export default function Movies() {
   const [data, setData] = useState([]);
   const location = useLocation();
   Session.setmid(location.state.id);
+
   var x=0,count=0;
   const getData = () => {
+    Axios.post("http://localhost:3001/Myrating", {
+      id:location.state.id,
+    })
     fetch('http://localhost:3001/Myrating'
         , {
             headers: {
@@ -61,6 +66,8 @@ useEffect(() => {
 }, [])
 
 {data.map((item2) => {if(location.state.id==item2.movie_id){x= x+item2.rating;count++;}} )}
+//code to get the review details 
+
   return (
     <>
       <Header />
@@ -105,14 +112,26 @@ useEffect(() => {
 
               </div>
               <div class="row">  
+              <h2>User Reviews</h2>
+              <hr></hr>
                { data.map((item) => 
                 
               <div class="col-lg-3">
-                     <div class="card ">
-                            <h6>{item.user_id}</h6>    
-                            <h6>{item.rating}</h6>
-                            <h6>{item.value}</h6>               
-                    </div>
+                <div class="row">
+                     <div class=" review-box ">
+                      
+                     
+                             <h4>{item.user_id} Says</h4>
+                        <div class="col-lg-3">
+                            <img class="test-img"src="https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png" />
+                        </div>
+                        <div class="col-lg-9">
+                            <span>{item.rating}/10</ span> 
+                            <p>{item.value}</p>
+                       </div>
+                      </div>  
+                    </div>           
+                    
               </div>
 )}
               </div>

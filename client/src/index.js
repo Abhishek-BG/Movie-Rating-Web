@@ -5,6 +5,7 @@ import Home from './Layout/Home'
 import { BrowserRouter, Redirect, Routes, Route } from "react-router-dom";
 import Admindash from './Layout/admindash'
 import AddMovie from './Layout/admin/addmovie'
+import AdminReview from './Layout/admin/adminreview'
 import Signup from './Component/signup'
 import UserLogin from './Component/userlogin'
 import { combineReducers } from 'redux';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/AddMovie" element={<AddMovie/>} />
           <Route path="/AdminDash" element={<Admindash/>} />
           <Route path="/SignUp" element={<Signup/>} />
+          <Route path="/AdminReview" element={<AdminReview/>}/>
           <Route path="/Login" element={<UserLogin/>} />
         </Route>
       </Routes>

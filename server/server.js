@@ -182,6 +182,30 @@ app.post('/rating', (req, res) => {
             res.send({ message:"Review Exists"})
         }
         else{
+            //query to update user to critic 
+            db.query("SELECT * FROM review WHERE user_id = ?",[userid], (err, results, fields2) => {
+                if(err) throw err;
+                if(results.length > 1)
+                {   
+                    if(userid==1)
+                    { 
+                        //skip
+                    }else{
+                    console.log("Critic Updated")
+                    db.query("UPDATE users SET role = ? WHERE email = ?",[2,userid], (err, results, fields2) => {
+                        if(err) throw err;
+                        if(results.length > 0)
+                          { 
+                            console.log('critic logged')
+                          }else{
+                            console.log(results)
+                          }
+                        
+                    });
+                }
+                }
+            });
+            //insert review
             db.execute(
                 "INSERT INTO review (movie_id,user_id,user_role,rating,value) values(?,?,?,?,?) ",
                 [movieid,userid,userrole,rating,value],
@@ -213,17 +237,13 @@ app.get('/mymovies', (req, res) => {
 //get movie id
 var mid = 0;
 app.get('/Myrating', (req, res) => {
-
-app.post('/Myrating', (request, result) => {
-    const id = request.body.id;
-    mid =id;
-});
    // console.log(mid);
-    db.query("SELECT * FROM review where movie_id = ?",[mid], (err, results, fields) => {
+    db.query("SELECT * FROM review", (err, results, fields) => {
       if(err) throw err;
          res.send(results);
     });
 });
+
 app.listen(3001, () => {
     console.log("running server");
 });

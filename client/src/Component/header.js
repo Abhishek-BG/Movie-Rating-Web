@@ -17,7 +17,7 @@ function MyLinks() {
 
 		return (
 			<>
-
+				
 				<li class="menu-item ">  <Link to="/"> Home</Link></li>
 				<li class="menu-item"><Link to="/Login">Login</Link></li>
 				<li class="menu-item"><Link to="/SignUp">Sign Up</Link></li>
@@ -28,6 +28,7 @@ function MyLinks() {
 	else if (Session.getrole() == 0 && session != 'null') {
 		return (
 			<>
+			
 				<li class="menu-item ">  <Link to="/"> Home</Link></li>
 				<li class="menu-item"><Link to="/Watchlist">Watch List</Link></li>
 				<li class="menu-item">
@@ -46,10 +47,30 @@ function MyLinks() {
 	else if (Session.getrole() == 1 && session != 'null') {
 		return (
 			<>
+				<li class="menu-item "> <span>  |</span>  Welcome Admin</li>
 				<li class="menu-item ">  <Link to="/"> Home</Link></li>
 				<li class="menu-item"><Link to="/AddMovie">Add Movies</Link></li>
-				<li class="menu-item"><Link to="/Reviews">Reviews</Link></li>
+				<li class="menu-item"><Link to="/AdminReview">Reviews</Link></li>
 				<li class="menu-item"><Link to="/Users">Users</Link></li>
+				<li class="menu-item">
+					<input type="button"
+						class="text-centre mybtn"
+						name="submit"
+						value="Logout"
+						onClick={() => logout()} />
+
+				</li>
+
+
+
+			</>)
+	}
+	else if (Session.getrole() == 2 && session != 'null') {
+		return (
+			<>
+				<li class="menu-item "> <span>  |</span> Welcome Critic</li>
+				<li class="menu-item ">  <Link to="/"> Home</Link></li>
+				<li class="menu-item"><Link to="/Watchlist">Watch List</Link></li>
 				<li class="menu-item">
 					<input type="button"
 						class="text-centre mybtn"

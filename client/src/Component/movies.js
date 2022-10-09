@@ -135,13 +135,12 @@ if(critic >=3){
               <div class="row">  
               <h2>User Reviews</h2>
               <hr></hr>
+              {//review by user for movie
+              }
                { data.map((item) => {if(item.movie_id==location.state.id){return(
-                
               <div class="col-lg-3">
                 <div class="row">
                      <div class=" review-box ">
-                      
-                     
                              <h4>{item.user_id} Says</h4>
                         <div class="col-lg-3">
                             <img class="test-img"src="https://www.nicepng.com/png/detail/128-1280406_view-user-icon-png-user-circle-icon-png.png" />

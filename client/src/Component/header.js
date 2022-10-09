@@ -13,7 +13,7 @@ function MyLinks() {
 
 	var session = sessionStorage.getItem("key");
 	//alert(Session.getrole()==0)
-	if (Session.getrole() == false && session == 'null') {
+	if (Session.getrole() == false && session == 'null' || session == null) {
 
 		return (
 			<>

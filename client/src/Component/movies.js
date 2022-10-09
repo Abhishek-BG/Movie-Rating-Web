@@ -79,8 +79,9 @@ if(critic >=3){
 //calculate rating
 {data.map((item2) => {if(location.state.id==item2.movie_id){
   if(item2.user_role==2){
+    
     x=x+(item2.rating*2)//2x
-    count++;
+    count+=2;
   }else{
     x= x+item2.rating;
     count++;

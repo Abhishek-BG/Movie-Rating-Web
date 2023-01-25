@@ -1,5 +1,5 @@
 # Movie-Rating-Web
- A React WebPagge to Rate and Review Movies
+ A React WebPagge to Rate and Review Movies using web 3.0
 # Server 
  1)npm init
  2)npm install express --save
